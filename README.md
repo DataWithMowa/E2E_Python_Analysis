@@ -17,7 +17,7 @@ In today’s fast-paced e-commerce industry, fast and efficient order delivery i
 ## Project Objective:
 <details>
   <summary>Click to expand</summary>
- <br>This project focuses on assessing the accuracy of fees charged by courier companies for the delivery of goods in E2E transactions. The goal is to ensure that companies are billed appropriately for the services provided by courier companies.
+ <br>This project focuses on assessing the accuracy of fees charged by courier companies for the delivery of goods in Enterprise to Enterprise transactions. The goal is to ensure that companies are billed appropriately for the services provided by courier companies.
 </details>
 
 ## Data Overview:
@@ -34,8 +34,7 @@ In today’s fast-paced e-commerce industry, fast and efficient order delivery i
 ### Definitions:
 <details>
   <summary>Click to expand</summary>
- <br>
-  
+ <br>  
 - fwd_a_fixed: (Fixed Forward Charge), a fixed cost for shipping a package from the origin to the destination. It's the primary fee for the courier service.
   
 - fwd_a_additional: (Additional Forward Charge), an additional charge added to the standard shipping cost due to specific circumstances or service requirements such as special handling, remote area delivery, faster delivery service, fuel surcharge, etc.
@@ -70,107 +69,165 @@ In today’s fast-paced e-commerce industry, fast and efficient order delivery i
 </details>
 </details>
 
-## Tools Used:
+## Tools and Libraries Used
 <details>
   <summary>Click to expand</summary>
- <br>
-I used the following tools and librabries:
-  
-- Jupyter Notebook: Writing and Executing Codes
-- Pandas Python Library: Data Manipulation and Analysis
-- Plotly Python Library: Data Visualization
+  <br>
+  For this analysis, I utilized the following tools and libraries:
+
+  * **Jupyter Notebook:** This interactive environment was used for writing, executing, and documenting the Python code, allowing for a clear and reproducible workflow.
+  * **Pandas Python Library:** Pandas was employed for data manipulation, cleaning, and analysis. It facilitated tasks such as data loading, merging, filtering, and aggregation.
+  * **Plotly Python Library (plotly.py):** Plotly was used for creating interactive and informative data visualizations, enabling effective exploration and communication of insights.
+  * **Matplotlib Python Library:** Matplotlib was utilized to create static visualizations, specifically a scatter plot to visualize and compare the differences between the weight slabs calculated by SIGMA and those charged by the courier company.
 </details>
 
-## Data Cleaning and Preparation:
+## Data Cleaning and Preparation
+
 <details>
   <summary>Click to expand</summary>
- <br>
-  
-In the initial data preparation phase, I performed the following tasks:
-  
-1. I imported the necessary python libraries and the datasets.
-2. Checked for missing values.
-3. Data cleaning and formatting
+  <br>
+
+  In the initial data preparation phase, I performed the following tasks:
+
+  1.  **Library Imports:**
+      * Imported Pandas for data manipulation and analysis.
+      * Imported plotly.
+
+  2.  **Missing Value Handling:**
+      * Checked for missing values using `isnull()` on all columns.
+      * Found 0 missing values in all columns.
+
+  3.  **Data Cleaning and Formatting:**
+      * Renamed the 'ExternOrderNo' column to 'Order ID' to ensure consistency across datasets.
+      * There was no need for date conversion.
+      * There were no duplicates that needed to be removed.
+      * All the columns were standardized.
+      * Merged the 'Order Report' and 'SKU Master' datasets using an inner join based on the 'SKU' column.
+      * To enrich courier invoice data, I extracted unique pin codes into a reference table, then subset the invoice data for relevant columns, and finally merge these two datasets     
+        using the pin code as a key to create a combined dataset.
+      * Merged the pin codes with the main dataframe creating a new dataframe called 'merged_2'.
+      * Calculated the weight in kilograms by dividing the ‘Weight (g)’ column in the ‘merged2’ DataFrame by 1000.
+      * Calculated the weight slab based on he weight of the weight of the shipment.
+      * Renamed the columns 'Zone' in 'Courier Invoice' dataframe to 'Delivery Zone Charged by Courier Company'.
+      * Renamed the column 'Zone' in the 'merged_2' dataframe to 'Delivery Zone As Per SIGMA'.
+      * Renamed the column 'Weight Slab(KG)' in the 'merged_2' dataframe to 'Weight Slab As Per SIGMA'. All in na bit to get our desired 'merged_2' dataframe.
+      * Calculated the Expected Charges As Per SIGMA.
+      * Merged the updated 'merged_2' dataframe with the courier invoice to display the final dataframe.
+      * Created 'Difference (NGN.)' column by subtracting 'Expected Charge as per SIGMA' column from 'Billing Amount (NGN.)' column.
+      * Summarized the accuracy of E2E courier charges based on the charged prices and expected prices as per SIGMA.
+
 </details>
 
-## Exploratory Data Analysis:
+## Exploratory Data Analysis(EDA):
 <details>
   <summary>Click to expand</summary>
  <br>
-I used EDA to answer questions like:
-  
-- Total Orders where ABC has been correctly charged.
-- Total Orders where ABC has been overcharged.
-- Total Orders where ABC has been undercharged.
+
+  The primary objective of this EDA was to investigate the accuracy of courier charges. We aimed to determine the number of orders that were correctly charged, overcharged, and undercharged, and to identify potential factors contributing to charge discrepancies.
+
+  **Methodology:**
+
+  We used the Pandas library to manipulate and analyze the data. We calculated charge differences by comparing the actual charges from the courier invoices with the expected charges calculated based on our own rate tables. We then used Plotly and MatPlotLib to visualize the distribution of charge differences, zones with overcharged orders and weight slab differences.
+
+  **Key Findings:**
+
+  * **Charge Differences:**
+      * We found that 354 orders were overcharged, resulting in a total overcharge amount of NGN 23,742,040.
+      * 47 orders were undercharged, with a total undercharge amount of NGN 1,242,780.
+      * No orders were correctly charged.
+  * **Distribution of Differences:**
+      * The distribution of charge differences was skewed towards positive values, indicating a tendency for overcharging.
+      * <img src="newplot.png" alt="My Plotly Plot" width="900">
+  * **Delivery Zones:**
+      * We observed a higher frequency of overcharged orders in specific delivery zones.
+      * <img src="Delivery Zone Plotly Chart.png" alt="My Delivery Bar Chart" width="auto">
+      * The chart above shows that delivery zones d and e were overcharged by courier companies.
+  * **Weight Differences:**
+      * We found differences between the 'Weight slab charged by Courier companies' and 'Weight slab as per SIGMA', which contributed to charge differences.
+      * 
+
+  **Insights:**
+
+  The EDA revealed a significant issue with overcharging. Further investigation is needed to identify the root causes of these discrepancies and implement corrective measures.
+
 </details>
 
-## Data Analysis:
+## Data Analysis
 <details>
   <summary>Click to expand</summary>
  <br>
- Here are some major interesting codes aand functions I worked with:
 
-```python
-pd.merge() : # A Pandas function used for merging DataFrames.
-```
-```python
-sigma_courier = pincode_mapping.drop_duplicates(subset=['Customer Pincode'])
-courier_sigma= courier_invoice[['Order ID', 'Customer Pincode','Type of Shipment']]
-pincodes= courier_abc.merge(abc_courier,on='Customer Pincode')
-print(pincodes.head())
+This section details the analytical processes performed to compare courier company charges with expected charges calculated based on our internal standards.
 
-# The code above was used to merge the courier invoice and pincode mapping dataset.
-```
+**Key Analytical Steps:**
 
-```python
-def weight_slab(weight):
-    i = round(weight % 1, 1)
-    if i == 0.0:
-        return weight
-    elif i > 0.5:
-        return int(weight) + 1.0
-    else:
-        return int(weight) + 0.5
+1.  **Data Integration:**
+    * Utilized `pd.merge()` to combine data from the courier invoice and pincode mapping datasets, enriching the invoice data with customer pincode information.
+    * This integration was crucial for linking order details with geographical data.
+    * Code:
+        ```python
+        sigma_courier = pincode_mapping.drop_duplicates(subset=['Customer Pincode'])
+        courier_sigma= courier_invoice[['Order ID', 'Customer Pincode','Type of Shipment']]
+        pincodes= courier_abc.merge(abc_courier,on='Customer Pincode')
+        print(pincodes.head())
+        ```
 
-merged2['Weight Slab (KG)'] = merged2['Weights (Kgs)'].apply(weight_slab)
-courier_invoice['Weight Slab Charged by Courier Company']=(courier_invoice['Charged Weight']).apply(weight_slab)
+2.  **Weight Slab Calculation:**
+    * Defined a `weight_slab()` function to determine the weight slab for each shipment based on its weight.
+    * This function rounded weights to the nearest 0.5 kg increment, following standard courier industry practices.
+    * Code:
+        ```python
+        def weight_slab(weight):
+            i = round(weight % 1, 1)
+            if i == 0.0:
+                return weight
+            elif i > 0.5:
+                return int(weight) + 1.0
+            else:
+                return int(weight) + 0.5
 
-# The above function is the The weight_slab() function which is defined to determine the weight slab based on the weight of the shipment.
-```
+        merged2['Weight Slab (KG)'] = merged2['Weights (Kgs)'].apply(weight_slab)
+        courier_invoice['Weight Slab Charged by Courier Company']=(courier_invoice['Charged Weight']).apply(weight_slab)
+        ```
 
-```python
-total_expected_charge = []
+3.  **Expected Charge Calculation:**
+    * Implemented a calculation to determine the expected shipping charges based on our internal rates (SIGMA).
+    * This calculation considered factors such as:
+        * Delivery zone
+        * Weight slab
+        * Type of shipment (forward or forward and RTO)
+        * Courier company rate tables.
+    * The results were stored in a new column, 'Expected Charge as per SIGMA'.
+    * Code:
+        ```python
+        def calculate_expected_charge(row, courier_company_rates):
+            fwd_category = 'fwd_' + row['Delivery Zone As Per SIGMA']
+            fwd_fixed = courier_company_rates.at[0, fwd_category + '_fixed']
+            fwd_additional = courier_company_rates.at[0, fwd_category + '_additional']
+            rto_category = 'rto_' + row['Delivery Zone As Per SIGMA']
+            rto_fixed = courier_company_rates.at[0, rto_category + '_fixed']
+            rto_additional = courier_company_rates.at[0, rto_category + '_additional']
+            weight_slab = row['Weight Slab As Per SIGMA']
+            additional_weight = max(0, (weight_slab - 0.5) / 0.5)
 
-for _, row in merged2.iterrows():
-    fwd_category = 'fwd_' + row['Delivery Zone As Per SIGMA']
-    fwd_fixed = courier_company_rates.at[0, fwd_category + '_fixed']
-    fwd_additional = courier_company_rates.at[0, fwd_category + '_additional']
-    rto_category = 'rto_' + row['Delivery Zone As Per SIGMA']
-    rto_fixed = courier_company_rates.at[0, rto_category + '_fixed']
-    rto_additional = courier_company_rates.at[0, rto_category + '_additional']
+            if row['Type of Shipment'] == 'Forward charges':
+                return fwd_fixed + additional_weight * fwd_additional
+            elif row['Type of Shipment'] == 'Forward and RTO charges':
+                return fwd_fixed + additional_weight * (fwd_additional + rto_additional)
+            else:
+                return 0
 
-    weight_slab = row['Weight Slab As Per SIGMA']
+        merged2['Expected Charge as per SIGMA'] = merged2.apply(lambda row: calculate_expected_charge(row, courier_company_rates), axis=1)
+        print(merged2.head())
+        ```
 
-    if row['Type of Shipment'] == 'Forward charges':
-        additional_weight = max(0, (weight_slab - 0.5) / 0.5)
-        total_expected_charge.append(fwd_fixed + additional_weight * fwd_additional)
-    elif row['Type of Shipment'] == 'Forward and RTO charges':
-        additional_weight = max(0, (weight_slab - 0.5) / 0.5)
-        total_expected_charge.append(fwd_fixed + additional_weight * (fwd_additional + rto_additional))
-    else:
-        total_expected_charge.append(0)
+4.  **Charge Discrepancy Analysis:**
+    * A 'Difference (NGN.)' column was created by subtracting the 'Expected Charge as per SIGMA' from the 'Billing Amount (NGN.)' from the courier invoice.
+    * This column was used to analyze any differences between the two charge amounts.
 
-merged2['Expected Charge as per SIGMA'] = total_expected_charge
-print(merged2.head())
+**Purpose:**
 
-'''
-The code above is a block of code that iterates through a Pandas DataFrame (merged2) and calculates an "Expected Charge as per SIGMA" based on several factors, including:
-Delivery zone
-Weight slab
-Type of shipment
-Courier company rates (from courier_company_rates DataFrame)
-'''
-```
+These analytical steps were performed to identify discrepancies between the courier company's charged amounts and our expected charges, allowing us to assess the accuracy and efficiency of the courier services.
 </details>
 
 ## Results & Findings:
@@ -178,61 +235,75 @@ Courier company rates (from courier_company_rates DataFrame)
   <summary>Click to expand</summary>
  <br>
 
-These are the three major things I found out concerning our courier companies charges:
+After comparing the courier company's billed charges with our expected charges (SIGMA), we identified the following discrepancies:
 
-| Description                                         | Count | Amount (NGN.) |
-|-----------------------------------------------------|-------|---------------|
-| Total Orders where SIGMA has been correctly charged | 0     | 0.0           |
-| Total Orders where SIGMA has been overcharged       | 354   | 23742040.0    |
-| Total Orders where SIGMA has been undercharged      | 47    | -1242780.0     |
+**Key Findings:**
+
+* Notably, there were no orders where the courier's charges perfectly matched our expected SIGMA charges.
+
+| Description                                      | Count | Amount (NGN.) |
+| :------------------------------------------------ | :---- | :------------ |
+| Orders with Correct Charges (Matching SIGMA)       | 0     | 0.0           |
+| Orders with Overcharges (Courier Exceeds SIGMA)   | 354   | 23,742,040.0  |
+| Orders with Undercharges (Courier Below SIGMA)    | 47    | -1,242,780.0   |
+
+**Summary:**
+
+The analysis reveals that a significant number of orders (354) were overcharged by the courier company, resulting in a substantial financial impact. Conversely, a smaller number of orders (47) were undercharged. This data highlights the need for a review of the courier's billing practices and potential renegotiation of rates.
 </details>
 
-## Recommendations:
+## Recommendations for Improving Courier Charge Accuracy:
 <details>
   <summary>Click to expand</summary>
  <br>
-  
-Here are my recommendations for these courier companies and their courier charges:
 
- 1. Investigate Overcharging Discrepancies:
- - Conduct a thorough investigation into the 354 overcharged orders.
- - Identify the root causes of the overcharging (e.g., incorrect weight calculations, incorrect zone assignments, system errors).
- - Analyze the patterns in the overcharged orders (e.g., specific delivery zones, package types, courier services).
+**Investigate Overcharging Discrepancies:**
 
- 2. Implement Corrective Actions:
-- Develop and implement corrective measures to prevent future overcharging.
-- This may involve:
-  - Auditing and improving the accuracy of weight and dimension calculations.
-  - Verifying and correcting zone assignments.
-  - Enhancing system checks and validations.
-  - Providing additional training to staff involved in charge calculations.
-  - Consider implementing automated checks to verify charges against expected rates.
-   
- 3. Address Undercharging:
-- While the undercharging amount is less significant, investigate the 47 undercharged orders to ensure there are no systematic errors.
-- Consider if the undercharging is due to any promotional activities.
+* Conduct a thorough investigation into the 354 overcharged orders.
+* Identify the root causes of the overcharging (e.g., incorrect weight calculations, incorrect zone assignments, system errors).
+* Analyze the patterns in the overcharged orders (e.g., specific delivery zones, package types, courier services).
 
- 4. Improve Transparency and Communication:
-- Provide clear and detailed invoices to customers, showing how charges are calculated.
-- Establish a process for customers to dispute charges and resolve discrepancies promptly.
-- Consider publishing the rate calculation methodology.
+**Implement Corrective Actions:**
 
- 5. Strengthen Internal Controls:
-- Implement stronger internal controls to ensure the accuracy of courier charges.
-- Conduct regular audits of courier charge calculations.
-- Consider implementing a system for independent verification of charges.
+* Develop and implement corrective measures to prevent future overcharging.
+* This may involve:
+    * Auditing and improving the accuracy of weight and dimension calculations.
+    * Verifying and correcting zone assignments.
+    * Enhancing system checks and validations.
+    * Providing additional training to staff involved in charge calculations.
+    * Consider implementing automated checks to verify charges against expected rates.
 
- 6. Negotiate with Courier Companies:
-- Use the analysis findings to negotiate better rates or service level agreements with the courier companies.
-- If systematic errors are found with a specific courier, consider switching to a more reliable provider.
+**Address Undercharging:**
 
- 7. System Improvements:
-- If the data is entered manually, look at the UI/UX for ease of use, and reduce manual errors.
-- Look at the API connection to the courier companies to ensure data is transferred correctly.
+* While the undercharging amount is less significant, investigate the 47 undercharged orders to ensure there are no systematic errors.
+* Consider if the undercharging is due to any promotional activities.
 
- 8. Focus on Customer Satisfaction:
-- Overcharging can lead to customer dissatisfaction and loss of business.
-- Prioritize accuracy in courier charges to improve customer trust and loyalty.
+**Improve Transparency and Communication:**
+
+* Provide clear and detailed invoices to customers, showing how charges are calculated.
+* Establish a process for customers to dispute charges and resolve discrepancies promptly.
+* Consider publishing the rate calculation methodology.
+
+**Strengthen Internal Controls:**
+
+* Implement stronger internal controls to ensure the accuracy of courier charges.
+* Conduct regular audits of courier charge calculations.
+* Consider implementing a system for independent verification of charges.
+
+**Negotiate with Courier Companies:**
+
+* Use the analysis findings to negotiate better rates or service level agreements with the courier companies.
+* If systematic errors are found with a specific courier, consider switching to a more reliable provider.
+
+**System Improvements:**
+
+* If the data is entered manually, look at the UI/UX for ease of use, and reduce manual errors.
+* Look at the API connection to the courier companies to ensure data is transferred correctly.
+
+**Focus on Customer Satisfaction:**
+
+* Overcharging can lead to customer dissatisfaction and loss of business.
+* Prioritize accuracy in courier charges to improve customer trust and loyalty.
 </details>
 
 ## Limitations:
