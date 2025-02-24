@@ -69,7 +69,7 @@ In today’s fast-paced e-commerce industry, fast and efficient order delivery i
 </details>
 </details>
 
-## Tools and Libraries Used
+## Tools and Libraries Used:
 <details>
   <summary>Click to expand</summary>
   <br>
@@ -80,7 +80,7 @@ In today’s fast-paced e-commerce industry, fast and efficient order delivery i
   * **Plotly Python Library (plotly.py):** Plotly was used for creating interactive and informative data visualizations, enabling effective exploration and communication of insights.
 </details>
 
-## Data Cleaning and Preparation
+## Data Cleaning and Preparation:
 
 <details>
   <summary>Click to expand</summary>
@@ -151,7 +151,7 @@ In today’s fast-paced e-commerce industry, fast and efficient order delivery i
 
 </details>
 
-## Data Analysis
+## Data Analysis:
 <details>
   <summary>Click to expand</summary>
  <br>
