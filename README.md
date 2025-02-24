@@ -143,7 +143,14 @@ In today’s fast-paced e-commerce industry, fast and efficient order delivery i
       * The chart above shows that delivery zones d and e were overcharged by courier companies.
   * **Weight Differences:**
       * We found differences between the 'Weight slab charged by Courier companies' and 'Weight slab as per SIGMA', which contributed to charge differences.
-      * 
+      * <img src="Weight Slab Chart.png" alt="My Weight Slab Chart" width="auto">
+      * The scatter plot above shows the relationship between the two weight slab columns:
+      * If the points fall along a straight diagonal line, it means there's a strong correlation (no charge differences).
+      * If the points are scattered, it indicates differences between the weight slabs.
+      * Points above the diagonal mean that the courier charged a higher weight slab.
+      * Points below the diagonal mean that the courier charged a lower weight slab than SIGMA.
+      * So, according to our diagram, the points fall above the diagonal which confirms that the ccourier companies charged a higher weight slab and the only place where there no 
+        charge difference is at the point where both weight slabs were 0.5 and fell along a straight diagonal line.
 
   **Insights:**
 
