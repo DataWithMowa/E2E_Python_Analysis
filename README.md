@@ -78,7 +78,6 @@ In today’s fast-paced e-commerce industry, fast and efficient order delivery i
   * **Jupyter Notebook:** This interactive environment was used for writing, executing, and documenting the Python code, allowing for a clear and reproducible workflow.
   * **Pandas Python Library:** Pandas was employed for data manipulation, cleaning, and analysis. It facilitated tasks such as data loading, merging, filtering, and aggregation.
   * **Plotly Python Library (plotly.py):** Plotly was used for creating interactive and informative data visualizations, enabling effective exploration and communication of insights.
-  * **Matplotlib Python Library:** Matplotlib was utilized to create static visualizations, specifically a scatter plot to visualize and compare the differences between the weight slabs calculated by SIGMA and those charged by the courier company.
 </details>
 
 ## Data Cleaning and Preparation
@@ -127,7 +126,7 @@ In today’s fast-paced e-commerce industry, fast and efficient order delivery i
 
   **Methodology:**
 
-  We used the Pandas library to manipulate and analyze the data. We calculated charge differences by comparing the actual charges from the courier invoices with the expected charges calculated based on our own rate tables. We then used Plotly and MatPlotLib to visualize the distribution of charge differences, zones with overcharged orders and weight slab differences.
+  We used the Pandas library to manipulate and analyze the data. We calculated charge differences by comparing the actual charges from the courier invoices with the expected charges calculated based on our own rate tables. We then used Plotly to visualize the distribution of charge differences, zones with overcharged orders and weight slab differences.
 
   **Key Findings:**
 
@@ -221,13 +220,13 @@ This section details the analytical processes performed to compare courier compa
         print(merged2.head())
         ```
 
-4.  **Charge Discrepancy Analysis:**
+4.  **Charge Difference Analysis:**
     * A 'Difference (NGN.)' column was created by subtracting the 'Expected Charge as per SIGMA' from the 'Billing Amount (NGN.)' from the courier invoice.
     * This column was used to analyze any differences between the two charge amounts.
 
 **Purpose:**
 
-These analytical steps were performed to identify discrepancies between the courier company's charged amounts and our expected charges, allowing us to assess the accuracy and efficiency of the courier services.
+These analytical steps were performed to identify differences between the courier company's charged amounts and our expected charges, allowing us to assess the accuracy and efficiency of the courier services.
 </details>
 
 ## Results & Findings:
