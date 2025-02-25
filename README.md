@@ -7,23 +7,23 @@
 <details>
   <summary>Click to expand</summary>
   <br>
-Courier Companies also known as Logistics Companies are businesses that specialize in transporting packages, documents, and other goods from one location to another.  They offer a range of services, from same-day delivery within a city to international shipping across continents.  They manage the entire process, including pickup, transportation, tracking, and delivery, often using a combination of transportation modes like trucks, airplanes, ships, and trains.  They play a vital role in facilitating commerce and connecting businesses and individuals globally.
-  
-Courier charges are the fees you pay to a courier company for their services, which primarily involve picking up a package from one location and delivering it to another.
-  
-In today’s fast-paced e-commerce industry, fast and efficient order delivery is crucial to business success. To ensure seamless order fulfilment, businesses often partner with courier companies to ship their products to customers. However, managing the charges collected by these courier companies can be difficult, especially when dealing with a high volume of orders. It is one of the real-time problems Enterprise to Enterprise businesses experience when their estimated charges for the same invoice don’t match. In this project, I will take you through a solution to this problem statement based on this E2E Courier Charges Accuracy Analysis using Python.
+In today’s fast-paced e-commerce industry, fast and efficient order delivery is crucial to business success. To ensure seamless order fulfilment, businesses often partner with courier companies to ship their products to customers. 
+
+However, managing the charges collected by these courier companies can be difficult, especially when dealing with a high volume of orders. These discrepancies can lead to financial losses, strained business relationships, and operational inefficiencies. It is one of the real-time problems Enterprise to Enterprise businesses like SIGMA INDUSTRIES, a manufacturing and distribution company, experience when their estimated charges for the same invoice don’t match. 
+
+This python project will analyze historical courier data from SIGMA INDUSTRIES and SUREWAY COURIERS, to identify patterns of charge discrepancies, and give recommendations to improve SUREWAY COURIERS charge accuracy. This E2E Courier Charges Accuracy Analysis using Python will aim to solve this problem.
 </details>
 
 ## Project Objective:
 <details>
   <summary>Click to expand</summary>
- <br>This project focuses on assessing the accuracy of fees charged by courier companies for the delivery of goods in Enterprise to Enterprise transactions. The goal is to ensure that companies are billed appropriately for the services provided by courier companies.
+ <br>This project focuses on assessing the accuracy of fees charged by SUREWAY COURIERS for the delivery of goods for SIGMA INDUSTRIES. The goal is to ensure that SIGMA is billed appropriately for the services provided by SUREWAY COURIERS.
 </details>
 
 ## Data Overview:
 <details>
   <summary>Click to expand</summary>
- <br>This dataset provides a comprehensive view of courier operations and is comprised of five Excel files. These files contain detailed information on:
+ <br>This dataset provides a comprehensive view of courier operations fromm Sigma Industries and Sureway Couriers and is comprised of five Excel files. These files contain detailed information on:
 
 - Courier company rates
 - Invoices
@@ -35,19 +35,19 @@ In today’s fast-paced e-commerce industry, fast and efficient order delivery i
 <details>
   <summary>Click to expand</summary>
  <br>  
-- fwd_a_fixed: (Fixed Forward Charge), a fixed cost for shipping a package from the origin to the destination. It's the primary fee for the courier service.
+- fwd_a_fixed: (Fixed Forward Charge), a fixed cost for shipping a package from the origin to the destination. It's the primary fee for the courier service rendered.
   
 - fwd_a_additional: (Additional Forward Charge), an additional charge added to the standard shipping cost due to specific circumstances or service requirements such as special handling, remote area delivery, faster delivery service, fuel surcharge, etc.
   
-- rto_a_fixed: (Return To Origin Fixed Charge), a fixed fee charged by the courier when a package has to be returned to the sender.  It's an extra cost incurred due to the failed delivery and the return process.
+- rto_a_fixed: (Return To Origin Fixed Charge), a fixed fee charged by Sureway Couriers when a package has to be returned to the sender.  It's an extra cost incurred due to the failed delivery and the return process.
   
 - rto_a_aditional: (Return To Origin Additional Charge), The key difference from "rto_a_fixed" is that this charge is not a fixed amount.  It's a variable charge added to the cost of returning the package and it only applies if an RTO occurs. Because it's not "fixed," the amount of the RTO charge will vary depending on some factors like distance of return, weight or dimension of package, courier policies, courier pricing structures, etc.
   
-- AWB Code: (Air WayBill Code), a unique identification number assigned to each air shipment, like a tracking number for your package.  It contains vital information about the shipment and allows it to be tracked throughout its journey.
+- AWB Code: (Air WayBill Code), a unique identification number assigned to each air shipment, like a tracking number for a package.  It contains vital information about the shipment and allows it to be tracked throughout its journey.
 
 - ORDER ID: A unique number assigned to a specific order written in an invoice or shipping label.
   
-- Charged Weight: Shipping costs are primarily determined by weight and size. Couriers use the "charged weight" to account for both the weight and size of your package and use it to decide how much to charge you for shipping.
+- Charged Weight: Shipping costs are primarily determined by weight and size. Sureway Couriers use the "charged weight" to account for both the weight and size of your package and use it to decide how much to charge for shipping.
   
 - Warehouse Pincode: This is the pincode of the warehouse where the shipment originates. It's the starting point of the package's journey.
   
@@ -90,7 +90,7 @@ In today’s fast-paced e-commerce industry, fast and efficient order delivery i
 
   1.  **Library Imports:**
       * Imported Pandas for data manipulation and analysis.
-      * Imported plotly.
+      * Imported plotly for data visuallization.
 
   2.  **Missing Value Handling:**
       * Checked for missing values using `isnull()` on all columns.
@@ -122,11 +122,11 @@ In today’s fast-paced e-commerce industry, fast and efficient order delivery i
   <summary>Click to expand</summary>
  <br>
 
-  The primary objective of this EDA was to investigate the accuracy of courier charges. We aimed to determine the number of orders that were correctly charged, overcharged, and undercharged, and to identify potential factors contributing to charge discrepancies.
+  The primary objective of this EDA was to investigate the accuracy of Sureway Courier charges. We aimed to determine the number of orders that were correctly charged, overcharged, and undercharged, and to identify potential factors contributing to charge discrepancies.
 
   **Methodology:**
 
-  We used the Pandas library to manipulate and analyze the data. We calculated charge differences by comparing the actual charges from the courier invoices with the expected charges calculated based on our own rate tables. We then used Plotly to visualize the distribution of charge differences, zones with overcharged orders and weight slab differences.
+  We used the Pandas library to manipulate and analyze the data. We calculated charge differences by comparing the actual charges from the courier invoices with the expected charges calculated based on our own rate tables. We then used Plotly to visualize the distribution of charge differences, zones with overcharged orders and weight slab differences all in a bit to investigate service charges.
 
   **Key Findings:**
 
@@ -136,14 +136,14 @@ In today’s fast-paced e-commerce industry, fast and efficient order delivery i
       * No orders were correctly charged.
   * **Distribution of Differences:**
       * The distribution of charge differences was skewed towards positive values, indicating a tendency for overcharging.
-      * <img src="newplot.png" alt="My Plotly Plot" width="900">
+        <img src="newplot.png" alt="My Plotly Plot" width="900">
   * **Delivery Zones:**
       * We observed a higher frequency of overcharged orders in specific delivery zones.
-      * <img src="Delivery Zone Plotly Chart.png" alt="My Delivery Bar Chart" width="auto">
+        <img src="Delivery Zone Plotly Chart.png" alt="My Delivery Bar Chart" width="auto">
       * The chart above shows that delivery zones d and e were overcharged by courier companies.
   * **Weight Differences:**
       * We found differences between the 'Weight slab charged by Courier companies' and 'Weight slab as per SIGMA', which contributed to charge differences.
-      * <img src="Weight Slab Chart.png" alt="My Weight Slab Chart" width="auto">
+        <img src="Weight Slab Chart.png" alt="My Weight Slab Chart" width="auto">
       * The scatter plot above shows the relationship between the two weight slab columns:
       * If the points fall along a straight diagonal line, it means there's a strong correlation (no charge differences).
       * If the points are scattered, it indicates differences between the weight slabs.
@@ -233,7 +233,7 @@ This section details the analytical processes performed to compare courier compa
 
 **Purpose:**
 
-These analytical steps were performed to identify differences between the courier company's charged amounts and our expected charges, allowing us to assess the accuracy and efficiency of the courier services.
+These analytical steps were performed to identify differences between the Sureway couriers' charged amounts and Sigma Industries expected charges, allowing us to assess the accuracy and efficiency of the courier services.
 </details>
 
 ## Results & Findings:
@@ -241,7 +241,7 @@ These analytical steps were performed to identify differences between the courie
   <summary>Click to expand</summary>
  <br>
 
-After comparing the courier company's billed charges with our expected charges (SIGMA), we identified the following discrepancies:
+After comparing Sureway Couriers' billed charges with expected charges at SIGMA INDUSTRIES, we identified the following discrepancies:
 
 **Key Findings:**
 
@@ -262,14 +262,16 @@ The analysis reveals that a significant number of orders (354) were overcharged 
 <details>
   <summary>Click to expand</summary>
  <br>
-
-**Investigate Overcharging Discrepancies:**
+  
+**To Sureway Couriers:**
+  
+**1. Investigate Overcharging Discrepancies:**
 
 * Conduct a thorough investigation into the 354 overcharged orders.
 * Identify the root causes of the overcharging (e.g., incorrect weight calculations, incorrect zone assignments, system errors).
 * Analyze the patterns in the overcharged orders (e.g., specific delivery zones, package types, courier services).
 
-**Implement Corrective Actions:**
+**2. Implement Corrective Actions:**
 
 * Develop and implement corrective measures to prevent future overcharging.
 * This may involve:
@@ -279,37 +281,39 @@ The analysis reveals that a significant number of orders (354) were overcharged 
     * Providing additional training to staff involved in charge calculations.
     * Consider implementing automated checks to verify charges against expected rates.
 
-**Address Undercharging:**
+**3. Address Undercharging:**
 
 * While the undercharging amount is less significant, investigate the 47 undercharged orders to ensure there are no systematic errors.
 * Consider if the undercharging is due to any promotional activities.
 
-**Improve Transparency and Communication:**
+**4. Improve Transparency and Communication:**
 
 * Provide clear and detailed invoices to customers, showing how charges are calculated.
 * Establish a process for customers to dispute charges and resolve discrepancies promptly.
 * Consider publishing the rate calculation methodology.
 
-**Strengthen Internal Controls:**
+**5. Strengthen Internal Controls:**
 
 * Implement stronger internal controls to ensure the accuracy of courier charges.
 * Conduct regular audits of courier charge calculations.
 * Consider implementing a system for independent verification of charges.
 
-**Negotiate with Courier Companies:**
-
-* Use the analysis findings to negotiate better rates or service level agreements with the courier companies.
-* If systematic errors are found with a specific courier, consider switching to a more reliable provider.
-
-**System Improvements:**
+**6. System Improvements:**
 
 * If the data is entered manually, look at the UI/UX for ease of use, and reduce manual errors.
 * Look at the API connection to the courier companies to ensure data is transferred correctly.
 
-**Focus on Customer Satisfaction:**
+**7. Focus on Customer Satisfaction:**
 
 * Overcharging can lead to customer dissatisfaction and loss of business.
 * Prioritize accuracy in courier charges to improve customer trust and loyalty.
+
+**To Sigma Industries:**
+
+**Negotiate with Courier Companies:**
+
+* Use the analysis findings to negotiate better rates or service level agreements with the Sureway Couriers.
+* If systematic errors are continually found with Sureway Couriers, consider switching to a more reliable provider.
 </details>
 
 ## Limitations:
