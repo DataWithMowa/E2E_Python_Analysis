@@ -1,6 +1,6 @@
 # E2E COURIER CHARGES ACCURACY ANALYSIS WITH PYTHON
 <div align="center">
-  <img src="Young Woman Pay Delivery Charges.png" alt="My Project Logo" width="auto" height="auto">
+  <img src="Readme Image/Young Woman Pay Delivery Charges.png"="Courier Service Image" width="auto" height="auto">
 </div>
 
 ## Background Story:
@@ -208,14 +208,14 @@ Before you can run this Jupyter Notebook, you'll need to have the following inst
       * No orders were correctly charged.
   * **Distribution of Differences:**
       * The distribution of charge differences was skewed towards positive values, indicating a tendency for overcharging.
-        <img src="newplot.png" alt="My Plotly Plot" width="900">
+        <img src="My Data Visualization Charts/newplot.png" alt="My Plotly Plot" width="900">
   * **Delivery Zones:**
       * We observed a higher frequency of overcharged orders in specific delivery zones.
-        <img src="Delivery Zone Plotly Chart.png" alt="My Delivery Bar Chart" width="auto">
+        <img src="My Data Visualization Charts/Delivery Zone Plotly Chart.png" alt="My Delivery Bar Chart" width="auto">
       * The chart above shows that delivery zones d and e were overcharged by courier companies.
   * **Weight Differences:**
       * We found differences between the 'Weight slab charged by Courier companies' and 'Weight slab as per SIGMA', which contributed to charge differences.
-        <img src="Weight Slab Chart.png" alt="My Weight Slab Chart" width="auto">
+        <img src="My Data Visualization Charts/Weight Slab Chart.png" alt="My Weight Slab Chart" width="auto">
       * The scatter plot above shows the relationship between the two weight slab columns:
       * If the points fall along a straight diagonal line, it means there's a strong correlation (no charge differences).
       * If the points are scattered, it indicates differences between the weight slabs.
