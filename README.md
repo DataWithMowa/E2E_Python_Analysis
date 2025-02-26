@@ -86,6 +86,10 @@ Before you can run this Jupyter Notebook, you'll need to have the following inst
 ### Data and Configuration
 
 * Find and download the datasets used in this analysis in the `Datasets/` directory.
+  
+## Jupyter Notebook
+
+Here is the Jupyter source file for this project: [E2E_Courier_Charges_Analysis_(1).ipynb](https://colab.research.google.com/drive/1tF-kgX60R8JPRfwp9uhJmxVIVtpQZZRW?usp=sharing)
 </details>
   
 ## Data Overview:
