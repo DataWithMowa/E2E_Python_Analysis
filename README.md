@@ -20,6 +20,74 @@ This python project will analyze historical courier data from SIGMA INDUSTRIES a
  <br>This project focuses on assessing the accuracy of fees charged by SUREWAY COURIERS for the delivery of goods for SIGMA INDUSTRIES. The goal is to ensure that SIGMA is billed appropriately for the services provided by SUREWAY COURIERS.
 </details>
 
+## How to Run The Source Code Locally:
+<details>
+  <summary>Click to expand</summary>
+
+## Here are the Setup and Execution instructions:
+### Prerequisites
+
+Before you can run this Jupyter Notebook, you'll need to have the following installed:
+
+* **Python:** You can download the latest version from [python.org](https://www.python.org/downloads/).
+  
+* **Jupyter Notebook:** Install it using pip:
+    ```bash
+    pip install notebook
+    ```
+* **Git (Optional but Recommended):** To clone the repository, download from [git-scm.com](https://git-scm.com/downloads).
+  
+* **Required Python Libraries:** Install pandas and plotly libraries:
+    ### OR
+  ```bash
+    pip install pandas plotly  # Use VS Code terminal or Google Colab
+    ```
+### Cloning the Repository (Use VS Code Terminal or Windows Command Prompt):
+
+1.  Clone the repository to your local machine:
+    ```bash
+    git clone [https://github.com/DataWithMowa/E2E_Python_Analysis.git]
+    ```
+2.  Navigate to the project directory:
+    ```bash
+    cd [https://github.com/DataWithMowa/E2E_Python_Analysis.git]
+    ```
+### Setting Up a Virtual Environment (Recommended)
+
+1.  Create a virtual environment:
+    ```bash
+    python3 -m venv venv
+    ```
+2.  Activate the virtual environment:
+    * On Windows:
+        ```bash
+        venv\Scripts\activate
+        ```
+    * On macOS/Linux:
+        ```bash
+        source venv/bin/activate
+        ```
+### Installing Dependencies
+
+1.  Install the required Python libraries:
+    ```bash
+    pip install pandas plotly
+    ```
+### Running the Jupyter Notebook
+
+1.  Start Jupyter Notebook from the project directory:
+    ```bash
+    jupyter notebook
+    ```
+2.  Your web browser will open, displaying the Jupyter Notebook interface.
+3.  Navigate to and open the `E2E Courier Charges Analysis (1).ipynb` file.
+4.  Run the cells in the notebook sequentially by clicking "Cell" > "Run All" or by pressing Shift + Enter in each cell.
+
+### Data and Configuration
+
+* Find and download the datasets used in this analysis in the `Datasets/` directory.
+</details>
+  
 ## Data Overview:
 <details>
   <summary>Click to expand</summary>
