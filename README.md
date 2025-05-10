@@ -1,9 +1,9 @@
-# E2E COURIER CHARGES ACCURACY ANALYSIS WITH PYTHON
+# 🚚 E2E COURIER CHARGES ACCURACY ANALYSIS WITH PYTHON
 <div align="center">
   <img src="Readme Image/Young Woman Pay Delivery Charges.png"="Courier Service Image" width="auto" height="auto">
 </div>
 
-## Background Story:
+## 📖 Background Story:
 <details>
   <summary>Click to expand</summary>
   <br>
@@ -14,13 +14,13 @@ However, managing the charges collected by these courier companies can be diffic
 This python project will analyze historical courier data from SIGMA INDUSTRIES and SUREWAY COURIERS, to identify patterns of charge discrepancies, and give recommendations to improve SUREWAY COURIERS charge accuracy. This E2E Courier Charges Accuracy Analysis using Python will aim to solve this problem.
 </details>
 
-## Project Objective:
+## 🎯 Project Objective:
 <details>
   <summary>Click to expand</summary>
  <br>This project focuses on assessing the accuracy of fees charged by SUREWAY COURIERS for the delivery of goods for SIGMA INDUSTRIES. The goal is to ensure that SIGMA is billed appropriately for the services provided by SUREWAY COURIERS.
 </details>
 
-## How to Run The Source Code Locally:
+## 🖥️ How to Run The Source Code Locally:
 <details>
   <summary>Click to expand</summary>
 
@@ -92,7 +92,7 @@ Before you can run this Jupyter Notebook, you'll need to have the following inst
  * Here is the Jupyter source file for this project: [E2E_Courier_Charges_Analysis_(1).ipynb](https://colab.research.google.com/drive/1tF-kgX60R8JPRfwp9uhJmxVIVtpQZZRW?usp=sharing)
 </details>
   
-## Data Overview:
+## 📂 Data Overview:
 <details>
   <summary>Click to expand</summary>
  <br>This dataset provides a comprehensive view of courier operations fromm Sigma Industries and Sureway Couriers and is comprised of five Excel files. These files contain detailed information on:
@@ -141,7 +141,7 @@ Before you can run this Jupyter Notebook, you'll need to have the following inst
 </details>
 </details>
 
-## Tools and Libraries Used:
+## 🛠️ Tools and Libraries Used:
 <details>
   <summary>Click to expand</summary>
   <br>
@@ -152,7 +152,7 @@ Before you can run this Jupyter Notebook, you'll need to have the following inst
   * **Plotly Python Library (plotly.py):** Plotly was used for creating interactive and informative data visualizations, enabling effective exploration and communication of insights.
 </details>
 
-## Data Cleaning and Preparation:
+## 🧹 Data Cleaning and Preparation:
 
 <details>
   <summary>Click to expand</summary>
@@ -189,7 +189,7 @@ Before you can run this Jupyter Notebook, you'll need to have the following inst
 
 </details>
 
-## Exploratory Data Analysis(EDA):
+## 🔍 Exploratory Data Analysis(EDA):
 <details>
   <summary>Click to expand</summary>
  <br>
@@ -230,7 +230,7 @@ Before you can run this Jupyter Notebook, you'll need to have the following inst
 
 </details>
 
-## Data Analysis:
+## 📈 Data Analysis:
 <details>
   <summary>Click to expand</summary>
  <br>
@@ -308,7 +308,7 @@ This section details the analytical processes performed to compare courier compa
 These analytical steps were performed to identify differences between the Sureway couriers' charged amounts and Sigma Industries expected charges, allowing us to assess the accuracy and efficiency of the courier services.
 </details>
 
-## Results & Findings:
+## 🏆 Results & Findings:
 <details>
   <summary>Click to expand</summary>
  <br>
@@ -330,7 +330,7 @@ After comparing Sureway Couriers' billed charges with expected charges at SIGMA 
 The analysis reveals that a significant number of orders (354) were overcharged by the courier company, resulting in a substantial financial impact. Conversely, a smaller number of orders (47) were undercharged. This data highlights the need for a review of the courier's billing practices and potential renegotiation of rates.
 </details>
 
-## Recommendations for Improving Courier Charge Accuracy:
+## ✅ Recommendations for Improving Courier Charge Accuracy:
 <details>
   <summary>Click to expand</summary>
  <br>
@@ -388,7 +388,7 @@ The analysis reveals that a significant number of orders (354) were overcharged 
 * If systematic errors are continually found with Sureway Couriers, consider switching to a more reliable provider.
 </details>
 
-## Limitations:
+## ⚠️ Limitations:
 <details>
   <summary>Click to expand</summary>
  <br>
@@ -400,4 +400,4 @@ The analysis reveals that a significant number of orders (354) were overcharged 
 - Challenges Faced: Data integration presented challenges due to variations in column naming across datasets. To overcome this, columns such as 'ExternOrderNo' (Order Report) and 'Zone' (Courier Invoice, merged2) were renamed to ensure uniformity and facilitate data analysis.
 </details>
 
-
+## 😊 Enjoy Coding!
